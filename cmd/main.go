@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"log"
 	"strings"
-	"fmt"
 )
 
 const ID_BTC = "1"
@@ -30,7 +29,7 @@ func main() {
 
 	http.HandleFunc("/cryptodata/", func(w http.ResponseWriter, r *http.Request) {
 	    cryptoId := strings.SplitN(r.URL.Path, "/", 3)[2]
-	    log.Println(fmt.Print("Query %v", r.URL.Path));
+	    log.Println("Query " + r.URL.Path);
 	    data, err := query(cryptoId)
 	    if isError(err, w) {
 			return
